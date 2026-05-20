@@ -107,7 +107,9 @@
     <script>
         // Registro condicional para evitar errores en entornos de vista previa
         if ('serviceWorker' in navigator && window.location.protocol !== 'blob:') {
-            navigator.serviceWorker.register('sw.js').catch(console.error);
+           navigator.serviceWorker.getRegistrations().then(function(registrations) {
+    for(let registration of registrations) {
+        registration.unregister();
         }
 
         function verificarHorario() {
