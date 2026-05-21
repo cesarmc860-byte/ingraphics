@@ -255,6 +255,11 @@
                         <img src="26.jpg" alt="" onerror="handleImgError(this)" class="max-w-full max-h-full object-contain rounded-xl">
                     </div>
 
+                    <!-- Slide 9: Tarjeta Diseño Oscuro Sabor Express (Nuevo) -->
+                    <div class="carousel-slide">
+                        <img src="27.png" alt="" onerror="handleImgError(this)" class="max-w-full max-h-full object-contain rounded-xl">
+                    </div>
+
                 </div>
 
                 <!-- Flechas de Navegación Grandes -->
@@ -268,7 +273,7 @@
 
             <!-- Controles Inferiores (Puntos + Botón Volver) -->
             <div class="mt-2">
-                <!-- Indicadores (Puntos de Paginación para 8 Slides) -->
+                <!-- Indicadores (Puntos de Paginación para 9 Slides) -->
                 <div class="flex justify-center flex-wrap gap-2 mb-4" id="carouselIndicators">
                     <span class="w-2.5 h-2.5 rounded-full bg-cyan-500 cursor-pointer transition-all" onclick="irASlide(0)"></span>
                     <span class="w-2.5 h-2.5 rounded-full bg-gray-600 cursor-pointer transition-all" onclick="irASlide(1)"></span>
@@ -278,6 +283,7 @@
                     <span class="w-2.5 h-2.5 rounded-full bg-gray-600 cursor-pointer transition-all" onclick="irASlide(5)"></span>
                     <span class="w-2.5 h-2.5 rounded-full bg-gray-600 cursor-pointer transition-all" onclick="irASlide(6)"></span>
                     <span class="w-2.5 h-2.5 rounded-full bg-gray-600 cursor-pointer transition-all" onclick="irASlide(7)"></span>
+                    <span class="w-2.5 h-2.5 rounded-full bg-gray-600 cursor-pointer transition-all" onclick="irASlide(8)"></span>
                 </div>
 
                 <button class="w-full bg-gradient-to-r from-blue-500 to-cyan-500 py-3 rounded-xl text-sm font-bold uppercase tracking-wider shadow-lg hover:opacity-90 active:scale-[0.99] transition-all" onclick="cerrarModalServicios()">Volver a la Tarjeta</button>
@@ -378,9 +384,9 @@
             document.getElementById('modalHorario').style.display = 'flex';
         }
 
-        // LÓGICA DEL CARRUSEL DE SERVICIOS (8 SLIDES)
+        // LÓGICA DEL CARRUSEL DE SERVICIOS (9 SLIDES)
         let currentSlide = 0;
-        const totalSlides = 8;
+        const totalSlides = 9;
         let autoPlayInterval = null;
 
         function abrirModalServicios() {
@@ -440,11 +446,7 @@
             }
         }
 
-        function reiniciarAutoPlay() {
-            iniciarAutoPlay();
-        }
-
-        // Soporte de gestos táctiles (Swipe)
+        // Support de gestos táctiles (Swipe)
         let touchStartX = 0;
         let touchEndX = 0;
         const container = document.getElementById('carouselContainer');
