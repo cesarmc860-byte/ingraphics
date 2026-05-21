@@ -14,115 +14,430 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        body { font-family: 'Montserrat', sans-serif; background-color: #050505; color: white; min-height: 100vh; display: flex; align-items: center; justify-content: center; padding: 20px; }
-        .neon-card { background: rgba(10, 25, 47, 0.4); backdrop-filter: blur(15px); border: 2px solid rgba(0, 255, 255, 0.3); box-shadow: 0 0 20px rgba(0, 150, 255, 0.3); border-radius: 30px; width: 100%; max-width: 400px; padding: 30px 20px; }
-        .logo-container { width: 140px; height: 140px; margin: 0 auto 15px; border-radius: 50%; padding: 4px; background: linear-gradient(135deg, #00f2ff, #0055ff); display: flex; align-items: center; justify-content: center; overflow: hidden; position: relative; }
-        .logo-img { width: 100%; height: 100%; object-fit: cover; border-radius: 50%; }
-        .action-btn { background: linear-gradient(90deg, #3b82f6, #06b6d4); transition: 0.3s; border-radius: 9999px; color: white; font-weight: 600; display: block; width: 100%; text-align: center; padding: 12px 0; text-decoration: none; }
-        .social-btn { background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.1); transition: 0.3s; text-decoration: none; color: white; display: flex; flex-direction: column; align-items: center; width: 80px; height: 80px; justify-content: center; cursor: pointer; }
-        .social-btn:hover { border-color: #00f2ff; }
-        .modal { display: none; position: fixed; z-index: 1000; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.9); align-items: center; justify-content: center; }
+        body { 
+            font-family: 'Montserrat', sans-serif; 
+            background-color: #050505; 
+            color: white; 
+            min-height: 100vh; 
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+            padding: 20px; 
+        }
+        .neon-card { 
+            background: rgba(10, 25, 47, 0.4); 
+            backdrop-filter: blur(15px); 
+            border: 2px solid rgba(0, 255, 255, 0.3); 
+            box-shadow: 0 0 20px rgba(0, 150, 255, 0.3); 
+            border-radius: 30px; 
+            width: 100%; 
+            max-width: 400px; 
+            padding: 30px 20px; 
+        }
+        .logo-container { 
+            width: 140px; 
+            height: 140px; 
+            margin: 0 auto 15px; 
+            border-radius: 50%; 
+            padding: 4px; 
+            background: linear-gradient(135deg, #00f2ff, #0055ff); 
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+            overflow: hidden; 
+            position: relative; 
+        }
+        .logo-img { 
+            width: 100%; 
+            height: 100%; 
+            object-fit: cover; 
+            border-radius: 50%; 
+        }
+        .action-btn { 
+            background: linear-gradient(90deg, #3b82f6, #06b6d4); 
+            transition: 0.3s; 
+            border-radius: 9999px; 
+            color: white; 
+            font-weight: 600; 
+            display: block; 
+            width: 100%; 
+            text-align: center; 
+            padding: 12px 0; 
+            text-decoration: none; 
+        }
+        .action-btn:hover {
+            opacity: 0.9;
+            transform: scale(1.02);
+        }
+        /* Botones sociales idénticos a los de la imagen */
+        .social-btn { 
+            background: rgba(255, 255, 255, 0.03); 
+            border: 1px solid rgba(255, 255, 255, 0.08); 
+            transition: all 0.3s ease; 
+            text-decoration: none; 
+            color: white; 
+            display: flex; 
+            flex-direction: column; 
+            align-items: center; 
+            justify-content: center; 
+            aspect-ratio: 1 / 1;
+            width: 100%;
+            cursor: pointer; 
+        }
+        .social-btn:hover { 
+            border-color: #00f2ff; 
+            background: rgba(0, 242, 255, 0.05);
+            box-shadow: 0 0 10px rgba(0, 242, 255, 0.2);
+        }
+        .modal { 
+            display: none; 
+            position: fixed; 
+            z-index: 1000; 
+            left: 0; 
+            top: 0; 
+            width: 100%; 
+            height: 100%; 
+            background-color: rgba(0, 0, 0, 0.95); 
+            align-items: center; 
+            justify-content: center; 
+        }
+        /* Estilos específicos para el carrusel */
+        .carousel-container {
+            width: 100%;
+            position: relative;
+            overflow: hidden;
+        }
+        .carousel-track {
+            display: flex;
+            transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+            width: 100%;
+        }
+        .carousel-slide {
+            flex: 0 0 100%;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 380px;
+        }
     </style>
 </head>
 <body>
 
     <div class="neon-card text-center">
+        <!-- Logo -->
         <div class="logo-container">
-            <img src="https://i.postimg.cc/BbnxHqPJ/logo.jpg" alt="Logo In Graphics" class="logo-img">
+            <img src="https://i.postimg.cc/BbnxHqPJ/logo.jpg" alt="" class="logo-img">
         </div>
-        <h1 class="text-3xl font-bold uppercase tracking-widest text-white mt-4 mb-2">IN GRAPHICS</h1>
-        <p class="text-[#00f2ff] font-medium mt-1 uppercase">Diseño y Programación</p>
-        <p class="text-gray-300 text-sm mt-3 px-4">Soluciones digitales creativas adaptadas a tus necesidades.</p>
         
+        <!-- Nombre & Profesión -->
+        <h1 class="text-3xl font-bold uppercase tracking-widest text-white mt-4 mb-2">IN GRAPHICS</h1>
+        <p class="text-[#00f2ff] text-sm font-semibold tracking-wider mt-1 uppercase">Diseño y Programación</p>
+        <p class="text-gray-300 text-xs mt-4 px-4 leading-relaxed">Soluciones digitales creativas adaptadas a tus necesidades.</p>
+        
+        <!-- Botones de Acción Principales -->
         <div class="grid grid-cols-2 gap-4 mt-6">
             <a href="https://wa.me/573204174675?text=Hola,%20quisiera%20agendar%20una%20cita%20con%20In%20Graphics.%0A%0A*Nombre:*%0A*Servicio%20de%20interés:*%0A*Fecha%20y%20hora%20preferida:*" target="_blank" class="action-btn">Agendar</a>
             <a href="tel:+573204174675" class="action-btn" style="background: linear-gradient(90deg, #10b981, #06b6d4);">Llamar</a>
         </div>
 
-        <p class="text-gray-500 text-xs mt-8 mb-4 uppercase tracking-widest">Toca los íconos para interactuar</p>
+        <p class="text-gray-500 text-[10px] mt-8 mb-4 uppercase tracking-widest">Toca los íconos para interactuar</p>
 
-        <div class="flex flex-wrap justify-center gap-3">
-            <div class="social-btn rounded-2xl" onclick="document.getElementById('modalServicios').style.display = 'flex'">
-                <i class="fas fa-palette text-xl text-white"></i>
-                <span class="text-[10px] mt-2">Servicios</span>
+        <!-- Cuadrícula Social Optimizada (idéntica a la imagen de referencia) -->
+        <div class="space-y-3">
+            <!-- Fila 1: 4 Elementos -->
+            <div class="grid grid-cols-4 gap-2">
+                <div class="social-btn rounded-2xl" onclick="abrirModalServicios()">
+                    <i class="fas fa-palette text-lg text-white"></i>
+                    <span class="text-[9px] mt-2 font-medium">Servicios</span>
+                </div>
+                <div class="social-btn rounded-2xl" onclick="verificarHorario()">
+                    <i class="fas fa-clock text-lg text-white"></i>
+                    <span class="text-[9px] mt-2 font-medium">Horario</span>
+                </div>
+                <div class="social-btn rounded-2xl" onclick="document.getElementById('modalQR').style.display = 'flex'">
+                    <i class="fas fa-th text-lg text-white"></i>
+                    <span class="text-[9px] mt-2 font-medium">QR</span>
+                </div>
+                <a href="https://maps.google.com" target="_blank" class="social-btn rounded-2xl">
+                    <i class="fas fa-map-marker-alt text-lg text-white"></i>
+                    <span class="text-[9px] mt-2 font-medium">Ubicación</span>
+                </a>
             </div>
-            <div class="social-btn rounded-2xl" onclick="verificarHorario()">
-                <i class="fas fa-clock text-xl text-white"></i>
-                <span class="text-[10px] mt-2">Horario</span>
+
+            <!-- Fila 2: 3 Elementos Centrados -->
+            <div class="flex justify-center gap-2">
+                <a href="https://instagram.com/ingraphicsmc" target="_blank" class="social-btn rounded-2xl w-[23%]">
+                    <i class="fab fa-instagram text-lg text-white"></i>
+                    <span class="text-[9px] mt-2 font-medium">Instagram</span>
+                </a>
+                <a href="https://wa.me/573204174675" target="_blank" class="social-btn rounded-2xl w-[23%]">
+                    <i class="fab fa-whatsapp text-lg text-white"></i>
+                    <span class="text-[9px] mt-2 font-medium">WhatsApp</span>
+                </a>
+                <a href="data:text/vcard;charset=utf-8,BEGIN:VCARD%0AVERSION:3.0%0AFN:In Graphics%0ATEL;TYPE=CELL:+573204174675%0AEND:VCARD" download="contacto.vcf" class="social-btn rounded-2xl w-[23%]">
+                    <i class="fas fa-save text-lg text-white"></i>
+                    <span class="text-[9px] mt-2 font-medium">Guardar</span>
+                </a>
             </div>
-            <div class="social-btn rounded-2xl" onclick="document.getElementById('modalQR').style.display = 'flex'">
-                <i class="fas fa-th text-xl text-white"></i>
-                <span class="text-[10px] mt-2">QR</span>
-            </div>
-            <a href="https://maps.google.com" target="_blank" class="social-btn rounded-2xl">
-                <i class="fas fa-map-marker-alt text-xl text-white"></i>
-                <span class="text-[10px] mt-2">Ubicación</span>
-            </a>
-            <a href="https://instagram.com/ingraphicsmc" target="_blank" class="social-btn rounded-2xl">
-                <i class="fab fa-instagram text-xl text-white"></i>
-                <span class="text-[10px] mt-2">Instagram</span>
-            </a>
-            <a href="https://wa.me/573204174675" target="_blank" class="social-btn rounded-2xl">
-                <i class="fab fa-whatsapp text-xl text-white"></i>
-                <span class="text-[10px] mt-2">WhatsApp</span>
-            </a>
-            <a href="data:text/vcard;charset=utf-8,BEGIN:VCARD%0AVERSION:3.0%0AFN:In Graphics%0ATEL;TYPE=CELL:+573204174675%0AEND:VCARD" download="contacto.vcf" class="social-btn rounded-2xl">
-                <i class="fas fa-save text-xl text-white"></i>
-                <span class="text-[10px] mt-2">Guardar</span>
-            </a>
         </div>
 
-        <div class="mt-6 text-sm text-cyan-400 underline cursor-pointer" onclick="document.getElementById('modalInstalar').style.display = 'flex'">¿Cómo instalar en mi dispositivo?</div>
+        <!-- Enlace de Instalación -->
+        <div class="mt-8 text-xs text-cyan-400 underline cursor-pointer hover:text-cyan-300 transition-colors" onclick="document.getElementById('modalInstalar').style.display = 'flex'">¿Cómo instalar en mi dispositivo?</div>
 
-        <div class="border-t border-white/10 mt-6 pt-4">
-            <p class="text-xs text-gray-400">Hecho con ♥ para un mundo digital</p>
-            <a href="mailto:contacto@ingraphics.com" class="text-xs text-white mt-1 opacity-70 hover:text-cyan-400 transition-colors">contacto@ingraphics.com</a>
+        <!-- Footer y Correo Electrónico Funcional -->
+        <div class="border-t border-white/10 mt-8 pt-4">
+            <p class="text-[10px] text-gray-500">Hecho con ♥ para un mundo digital</p>
+            <a href="mailto:contacto@ingraphics.com" class="text-xs text-gray-400 block mt-1 hover:text-cyan-400 transition-colors">contacto@ingraphics.com</a>
         </div>
     </div>
 
-    <!-- Modales -->
-    <div id="modalServicios" class="modal" onclick="this.style.display = 'none'">
-        <img src="https://i.postimg.cc/GmmGf3XF/servicios.png" alt="[Image of Servicios]" class="max-w-[90%] max-h-[90%] rounded-lg border border-cyan-500">
+    <!-- Modales de Visualización -->
+    
+    <!-- Modal Servicios con Carrusel Interactivo de Diseños Integrados -->
+    <div id="modalServicios" class="modal" onclick="cerrarModalServicios()">
+        <div class="bg-[#040d1a]/95 border border-cyan-500/50 p-5 rounded-3xl w-[90%] max-w-[360px] shadow-2xl relative" onclick="event.stopPropagation()">
+            
+            <div class="flex justify-between items-center mb-4">
+                <h3 class="text-cyan-400 font-bold uppercase tracking-widest text-sm">Portafolio y Servicios</h3>
+                <button class="text-gray-400 hover:text-white" onclick="cerrarModalServicios()">
+                    <i class="fas fa-times text-lg"></i>
+                </button>
+            </div>
+
+            <!-- Contenedor del Carrusel -->
+            <div class="carousel-container rounded-xl overflow-hidden bg-black/40 border border-white/10" id="carouselContainer">
+                <div class="carousel-track" id="carouselTrack">
+                    
+                    <!-- Slide 1: Tu Imagen Original de Servicios -->
+                    <div class="carousel-slide p-1">
+                        <img src="https://i.postimg.cc/GmmGf3XF/servicios.png" alt="" class="max-w-full max-h-[380px] object-contain rounded-lg">
+                    </div>
+
+                    <!-- Slide 2: Diseño de Restaurante (Sabor Express Mockup 1) -->
+                    <div class="carousel-slide p-1">
+                        <img src="20.png" alt="" class="max-w-full max-h-[380px] object-contain rounded-lg">
+                    </div>
+
+                    <!-- Slide 3: Diseño de Inteligencia Artificial (SoyAgentia) -->
+                    <div class="carousel-slide p-1">
+                        <img src="21.png" alt="" class="max-w-full max-h-[380px] object-contain rounded-lg">
+                    </div>
+
+                    <!-- Slide 4: Diseño de Tienda E-commerce (Remanence Colombia) -->
+                    <div class="carousel-slide p-1">
+                        <img src="22.png" alt="" class="max-w-full max-h-[380px] object-contain rounded-lg">
+                    </div>
+
+                    <!-- Slide 5: Diseño de Embudo/Landing Page (AquíXpert) -->
+                    <div class="carousel-slide p-1">
+                        <img src="23.png" alt="" class="max-w-full max-h-[380px] object-contain rounded-lg">
+                    </div>
+
+                    <!-- Slide 6: Sistema de Negocios (Klou Lab) -->
+                    <div class="carousel-slide p-1">
+                        <img src="24.png" alt="" class="max-w-full max-h-[380px] object-contain rounded-lg">
+                    </div>
+
+                    <!-- Slide 7: Tarjeta Sabor Express -->
+                    <div class="carousel-slide p-1">
+                        <img src="25.png" alt="" class="max-w-full max-h-[380px] object-contain rounded-lg">
+                    </div>
+
+                    <!-- Slide 8: Diseño Aura Visual -->
+                    <div class="carousel-slide p-1">
+                        <img src="26.jpg" alt="" class="max-w-full max-h-[380px] object-contain rounded-lg">
+                    </div>
+
+                </div>
+
+                <!-- Flechas de Navegación -->
+                <button class="absolute left-2 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-black/60 hover:bg-black/80 flex items-center justify-center text-white border border-white/10" onclick="moverCarrusel(-1)">
+                    <i class="fas fa-chevron-left text-xs"></i>
+                </button>
+                <button class="absolute right-2 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-black/60 hover:bg-black/80 flex items-center justify-center text-white border border-white/10" onclick="moverCarrusel(1)">
+                    <i class="fas fa-chevron-right text-xs"></i>
+                </button>
+            </div>
+
+            <!-- Indicadores (Puntos de Paginación para 8 Slides) -->
+            <div class="flex justify-center flex-wrap gap-1.5 mt-4" id="carouselIndicators">
+                <span class="w-2.5 h-2.5 rounded-full bg-cyan-500 cursor-pointer transition-all" onclick="irASlide(0)"></span>
+                <span class="w-2.5 h-2.5 rounded-full bg-gray-600 cursor-pointer transition-all" onclick="irASlide(1)"></span>
+                <span class="w-2.5 h-2.5 rounded-full bg-gray-600 cursor-pointer transition-all" onclick="irASlide(2)"></span>
+                <span class="w-2.5 h-2.5 rounded-full bg-gray-600 cursor-pointer transition-all" onclick="irASlide(3)"></span>
+                <span class="w-2.5 h-2.5 rounded-full bg-gray-600 cursor-pointer transition-all" onclick="irASlide(4)"></span>
+                <span class="w-2.5 h-2.5 rounded-full bg-gray-600 cursor-pointer transition-all" onclick="irASlide(5)"></span>
+                <span class="w-2.5 h-2.5 rounded-full bg-gray-600 cursor-pointer transition-all" onclick="irASlide(6)"></span>
+                <span class="w-2.5 h-2.5 rounded-full bg-gray-600 cursor-pointer transition-all" onclick="irASlide(7)"></span>
+            </div>
+
+            <button class="mt-5 w-full bg-gradient-to-r from-blue-500 to-cyan-500 py-2 rounded-xl text-xs font-bold uppercase tracking-wider" onclick="cerrarModalServicios()">Volver</button>
+        </div>
     </div>
 
+    <!-- Modal QR -->
     <div id="modalQR" class="modal" onclick="this.style.display = 'none'">
-        <img src="https://i.postimg.cc/7Y78G705/In-Graphics.png" alt="[Image of QR]" class="bg-white p-4 rounded-lg max-w-[80%]">
+        <div class="bg-white p-4 rounded-2xl border border-cyan-500 shadow-2xl max-w-[80%]" onclick="event.stopPropagation()">
+            <img src="https://i.postimg.cc/7Y78G705/In-Graphics.png" alt="" class="w-full h-auto rounded-lg">
+            <button class="mt-3 w-full bg-gray-900 text-white text-xs py-2 rounded-lg" onclick="document.getElementById('modalQR').style.display = 'none'">Cerrar</button>
+        </div>
     </div>
 
+    <!-- Modal Instalación -->
     <div id="modalInstalar" class="modal" onclick="this.style.display = 'none'">
-        <img src="https://i.postimg.cc/MpHtQY23/como-instalar.jpg" alt="" class="max-w-[90%] max-h-[90%] rounded-lg border border-cyan-500">
+        <img src="https://i.postimg.cc/MpHtQY23/como-instalar.jpg" alt="" class="max-w-[90%] max-h-[85%] rounded-lg border border-cyan-500 shadow-2xl">
     </div>
 
+    <!-- Modal Horario Dinámico -->
     <div id="modalHorario" class="modal" onclick="this.style.display = 'none'">
-        <div class="bg-gray-900 p-6 rounded-2xl border border-cyan-500 text-center text-white" onclick="event.stopPropagation()">
-            <h2 class="text-xl font-bold mb-4">Horario de Atención</h2>
-            <p id="estadoActual" class="text-lg font-bold mb-4"></p>
-            <p>Lunes a Viernes: 08:00 AM - 07:00 PM</p>
-            <p>Sábados: 08:00 AM - 06:00 PM</p>
-            <p>Domingos y Festivos: Cerrado</p>
-            <button class="mt-6 bg-cyan-600 px-4 py-2 rounded-full" onclick="document.getElementById('modalHorario').style.display = 'none'">Cerrar</button>
+        <div class="bg-gray-900 p-6 rounded-2xl border border-cyan-500 text-center text-white max-w-[85%] shadow-2xl" onclick="event.stopPropagation()">
+            <h2 class="text-lg font-bold mb-3 uppercase tracking-wider text-cyan-400">Horario de Atención</h2>
+            
+            <!-- Estado en tiempo real -->
+            <p id="estadoActual" class="text-sm font-bold mb-4"></p>
+            
+            <div class="space-y-2 text-xs text-gray-300">
+                <p><span class="font-semibold text-white">Lunes a Viernes:</span><br>08:00 AM - 07:00 PM</p>
+                <p><span class="font-semibold text-white">Sábados:</span><br>08:00 AM - 06:00 PM</p>
+                <p><span class="font-semibold text-white">Domingos y Festivos:</span><br>No Laboramos</p>
+            </div>
+            
+            <button class="mt-5 bg-gradient-to-r from-blue-500 to-cyan-500 text-xs px-6 py-2 rounded-full font-bold uppercase" onclick="document.getElementById('modalHorario').style.display = 'none'">Cerrar</button>
         </div>
     </div>
 
     <script>
-        // Registro condicional para evitar errores en entornos de vista previa
+        // Registro del Service Worker controlado para evitar conflictos de caché
         if ('serviceWorker' in navigator && window.location.protocol !== 'blob:') {
-           navigator.serviceWorker.getRegistrations().then(function(registrations) {
-    for(let registration of registrations) {
-        registration.unregister();
+            navigator.serviceWorker.register('sw2.js').then(function(reg) {
+                reg.onupdatefound = function() {
+                    const installingWorker = reg.installing;
+                    installingWorker.onstatechange = function() {
+                        if (installingWorker.state === 'installed' && navigator.serviceWorker.controller) {
+                            window.location.reload();
+                        }
+                    };
+                };
+            }).catch(console.error);
         }
 
+        // Lógica del Horario
         function verificarHorario() {
             const now = new Date();
             const day = now.getDay();
             const hour = now.getHours();
             let abierto = false;
-            if (day >= 1 && day <= 5 && hour >= 8 && hour < 19) abierto = true;
-            else if (day === 6 && hour >= 8 && hour < 18) abierto = true;
+
+            if (day >= 1 && day <= 5) {
+                if (hour >= 8 && hour < 19) abierto = true;
+            } else if (day === 6) {
+                if (hour >= 8 && hour < 18) abierto = true;
+            }
+
             const estadoEl = document.getElementById('estadoActual');
-            estadoEl.innerText = abierto ? "¡Estamos ABIERTOS ahora!" : "Actualmente estamos CERRADOS";
-            estadoEl.className = abierto ? "text-green-400 text-lg font-bold mb-4" : "text-red-400 text-lg font-bold mb-4";
+            if (abierto) {
+                estadoEl.innerText = "● ABIERTO AL PÚBLICO";
+                estadoEl.className = "text-green-400 text-sm font-bold mb-4 tracking-wider animate-pulse";
+            } else {
+                estadoEl.innerText = "● CERRADO ACTUAMENTE";
+                estadoEl.className = "text-red-400 text-sm font-bold mb-4 tracking-wider";
+            }
+
             document.getElementById('modalHorario').style.display = 'flex';
+        }
+
+        // LÓGICA DEL CARRUSEL DE SERVICIOS (8 SLIDES)
+        let currentSlide = 0;
+        const totalSlides = 8;
+        let autoPlayInterval = null;
+
+        function abrirModalServicios() {
+            document.getElementById('modalServicios').style.display = 'flex';
+            irASlide(0); // Empezar siempre desde el primero
+            iniciarAutoPlay();
+        }
+
+        function cerrarModalServicios() {
+            document.getElementById('modalServicios').style.display = 'none';
+            detenerAutoPlay();
+        }
+
+        function actualizarCarrusel() {
+            const track = document.getElementById('carouselTrack');
+            track.style.transform = `translateX(-${currentSlide * 100}%)`;
+            
+            // Actualizar puntos/indicadores
+            const indicators = document.getElementById('carouselIndicators').children;
+            for (let i = 0; i < indicators.length; i++) {
+                if (i === currentSlide) {
+                    indicators[i].className = "w-2.5 h-2.5 rounded-full bg-cyan-500 cursor-pointer transition-all";
+                } else {
+                    indicators[i].className = "w-2.5 h-2.5 rounded-full bg-gray-600 cursor-pointer transition-all";
+                }
+            }
+        }
+
+        function moverCarrusel(direccion) {
+            currentSlide += direccion;
+            if (currentSlide >= totalSlides) {
+                currentSlide = 0;
+            } else if (currentSlide < 0) {
+                currentSlide = totalSlides - 1;
+            }
+            actualizarCarrusel();
+            reiniciarAutoPlay();
+        }
+
+        function irASlide(index) {
+            currentSlide = index;
+            actualizarCarrusel();
+            reiniciarAutoPlay();
+        }
+
+        // Auto-play cada 6 segundos
+        function iniciarAutoPlay() {
+            detenerAutoPlay();
+            autoPlayInterval = setInterval(() => {
+                moverCarrusel(1);
+            }, 6000);
+        }
+
+        function detenerAutoPlay() {
+            if (autoPlayInterval) {
+                clearInterval(autoPlayInterval);
+            }
+        }
+
+        function reiniciarAutoPlay() {
+            iniciarAutoPlay();
+        }
+
+        // Soporte de gestos táctiles (Swipe)
+        let touchStartX = 0;
+        let touchEndX = 0;
+        const container = document.getElementById('carouselContainer');
+
+        container.addEventListener('touchstart', (e) => {
+            touchStartX = e.changedTouches[0].screenX;
+            detenerAutoPlay();
+        }, { passive: true });
+
+        container.addEventListener('touchend', (e) => {
+            touchEndX = e.changedTouches[0].screenX;
+            handleSwipe();
+            iniciarAutoPlay();
+        }, { passive: true });
+
+        function handleSwipe() {
+            const diffX = touchEndX - touchStartX;
+            if (Math.abs(diffX) > 50) { // Umbral mínimo de deslizamiento
+                if (diffX < 0) {
+                    moverCarrusel(1);  // Swipe izquierda -> Siguiente
+                } else {
+                    moverCarrusel(-1); // Swipe derecha -> Anterior
+                }
+            }
         }
     </script>
 </body>
