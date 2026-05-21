@@ -222,37 +222,37 @@
 
                     <!-- Slide 2: Diseño de Restaurante (Sabor Express Mockup 1) -->
                     <div class="carousel-slide">
-                        <img src="20.png" alt="" class="max-w-full max-h-full object-contain rounded-xl">
+                        <img src="20.png" alt="" onerror="handleImgError(this)" class="max-w-full max-h-full object-contain rounded-xl">
                     </div>
 
                     <!-- Slide 3: Diseño de Inteligencia Artificial (SoyAgentia) -->
                     <div class="carousel-slide">
-                        <img src="21.png" alt="" class="max-w-full max-h-full object-contain rounded-xl">
+                        <img src="21.png" alt="" onerror="handleImgError(this)" class="max-w-full max-h-full object-contain rounded-xl">
                     </div>
 
                     <!-- Slide 4: Diseño de Tienda E-commerce (Remanence Colombia) -->
                     <div class="carousel-slide">
-                        <img src="22.png" alt="" class="max-w-full max-h-full object-contain rounded-xl">
+                        <img src="22.png" alt="" onerror="handleImgError(this)" class="max-w-full max-h-full object-contain rounded-xl">
                     </div>
 
                     <!-- Slide 5: Diseño de Embudo/Landing Page (AquíXpert) -->
                     <div class="carousel-slide">
-                        <img src="23.png" alt="" class="max-w-full max-h-full object-contain rounded-xl">
+                        <img src="23.png" alt="" onerror="handleImgError(this)" class="max-w-full max-h-full object-contain rounded-xl">
                     </div>
 
                     <!-- Slide 6: Sistema de Negocios (Klou Lab) -->
                     <div class="carousel-slide">
-                        <img src="24.png" alt="" class="max-w-full max-h-full object-contain rounded-xl">
+                        <img src="24.png" alt="" onerror="handleImgError(this)" class="max-w-full max-h-full object-contain rounded-xl">
                     </div>
 
                     <!-- Slide 7: Tarjeta Sabor Express -->
                     <div class="carousel-slide">
-                        <img src="25.png" alt="" class="max-w-full max-h-full object-contain rounded-xl">
+                        <img src="25.png" alt="" onerror="handleImgError(this)" class="max-w-full max-h-full object-contain rounded-xl">
                     </div>
 
                     <!-- Slide 8: Diseño Aura Visual -->
                     <div class="carousel-slide">
-                        <img src="26.jpg" alt="" class="max-w-full max-h-full object-contain rounded-xl">
+                        <img src="26.jpg" alt="" onerror="handleImgError(this)" class="max-w-full max-h-full object-contain rounded-xl">
                     </div>
 
                 </div>
@@ -317,6 +317,28 @@
     </div>
 
     <script>
+        // Función de recuperación para solventar case-sensitivity en servidores (ej: .jpg vs .JPG)
+        function handleImgError(img) {
+            if (!img.dataset.retryCount) {
+                img.dataset.retryCount = "1";
+                const src = img.getAttribute('src');
+                if (src.endsWith('.jpg')) {
+                    img.src = src.slice(0, -4) + '.JPG';
+                } else if (src.endsWith('.JPG')) {
+                    img.src = src.slice(0, -4) + '.jpeg';
+                } else if (src.endsWith('.png')) {
+                    img.src = src.slice(0, -4) + '.PNG';
+                }
+            } else if (img.dataset.retryCount === "1") {
+                img.dataset.retryCount = "2";
+                const src = img.getAttribute('src');
+                // Fallback adicional por si acaso (ej. si era jpeg en minúscula)
+                if (src.endsWith('.JPG')) {
+                    img.src = src.slice(0, -4) + '.jpeg';
+                }
+            }
+        }
+
         // Registro del Service Worker controlado para evitar conflictos de caché
         if ('serviceWorker' in navigator && window.location.protocol !== 'blob:') {
             navigator.serviceWorker.register('sw2.js').then(function(reg) {
