@@ -130,10 +130,10 @@
 <body>
 
     <div class="neon-card text-center">
-        <!-- Logo -->
-        <div class="logo-container">
-            <img src="https://i.postimg.cc/BbnxHqPJ/logo.jpg" alt="[Logo In Graphics]" class="logo-img">
-        </div>
+        <!-- Logo Interactivo -->
+        <button class="logo-container cursor-pointer hover:scale-105 active:scale-95 transition-all duration-300 focus:outline-none" onclick="document.getElementById('modalLogo').style.display = 'flex'">
+            <img src="https://i.postimg.cc/BbnxHqPJ/logo.jpg" alt="[Logotipo In Graphics]" class="logo-img">
+        </button>
         
         <!-- Nombre & Profesión -->
         <h1 class="text-3xl font-bold uppercase tracking-widest text-white mt-4 mb-2">IN GRAPHICS</h1>
@@ -199,7 +199,21 @@
 
     <!-- Modales de Visualización -->
     
-    <!-- Modal Servicios en Pantalla Completa -->
+    <!-- Modal Información de la Empresa -->
+    <div id="modalLogo" class="modal" onclick="this.style.display = 'none'">
+        <div class="bg-[#040d1a]/95 border border-cyan-500/50 p-5 rounded-3xl w-[90%] max-w-[360px] shadow-2xl relative" onclick="event.stopPropagation()">
+            <div class="flex justify-between items-center mb-4">
+                <h3 class="text-cyan-400 font-bold uppercase tracking-widest text-xs">Información Corporativa</h3>
+                <button class="text-gray-400 hover:text-white" onclick="document.getElementById('modalLogo').style.display = 'none'">
+                    <i class="fas fa-times text-lg"></i>
+                </button>
+            </div>
+            <img src="https://i.postimg.cc/vBJ7nSgT/01-info.jpg" alt="[Información de In Graphics]" class="w-full h-auto rounded-2xl border border-cyan-500/30 shadow-[0_0_15px_rgba(0,242,255,0.1)] object-contain max-h-[70vh]">
+            <button class="mt-5 w-full bg-gradient-to-r from-blue-500 to-cyan-500 py-2 rounded-xl text-xs font-bold uppercase tracking-wider" onclick="document.getElementById('modalLogo').style.display = 'none'">Volver</button>
+        </div>
+    </div>
+    
+    <!-- Modal Servicios en Pantalla Completa con Portafolio de 12 Imágenes -->
     <div id="modalServicios" class="modal" onclick="cerrarModalServicios()">
         <div class="w-full h-full max-w-2xl mx-auto flex flex-col justify-between p-6 relative" onclick="event.stopPropagation()">
             
@@ -215,49 +229,64 @@
             <div class="flex-1 my-4 relative rounded-2xl overflow-hidden bg-black/50 border border-white/5" id="carouselContainer">
                 <div class="carousel-track" id="carouselTrack">
                     
-                    <!-- Slide 1: Tu Imagen Original de Servicios -->
+                    <!-- Slide 1: Diseño Gráfico -->
                     <div class="carousel-slide">
-                        <img src="https://i.postimg.cc/GmmGf3XF/servicios.png" alt="[Imagen de Volante de Servicios]" class="max-w-full max-h-full object-contain rounded-xl">
+                        <img src="1.png" alt="[Diseño Gráfico]" onerror="handleImgError(this)" class="max-w-full max-h-full object-contain rounded-xl">
                     </div>
 
-                    <!-- Slide 2: Diseño de Restaurante (Sabor Express Mockup 1) -->
+                    <!-- Slide 2: Desarrollo Web -->
                     <div class="carousel-slide">
-                        <img src="20.png" alt="[Sabor Express]" onerror="handleImgError(this)" class="max-w-full max-h-full object-contain rounded-xl">
+                        <img src="2.png" alt="[Desarrollo Web]" onerror="handleImgError(this)" class="max-w-full max-h-full object-contain rounded-xl">
                     </div>
 
-                    <!-- Slide 3: Diseño de Inteligencia Artificial (SoyAgentia) -->
+                    <!-- Slide 3: Desarrollo de Software -->
                     <div class="carousel-slide">
-                        <img src="21.png" alt="[SoyAgentia]" onerror="handleImgError(this)" class="max-w-full max-h-full object-contain rounded-xl">
+                        <img src="3.png" alt="[Desarrollo de Software]" onerror="handleImgError(this)" class="max-w-full max-h-full object-contain rounded-xl">
                     </div>
 
-                    <!-- Slide 4: Diseño de Tienda E-commerce (Remanence Colombia) -->
+                    <!-- Slide 4: Tarjetas Digitales -->
                     <div class="carousel-slide">
-                        <img src="22.png" alt="[Remanence Colombia]" onerror="handleImgError(this)" class="max-w-full max-h-full object-contain rounded-xl">
+                        <img src="4.png" alt="[Tarjetas Digitales]" onerror="handleImgError(this)" class="max-w-full max-h-full object-contain rounded-xl">
                     </div>
 
-                    <!-- Slide 5: Diseño de Embudo/Landing Page (AquíXpert) -->
+                    <!-- Slide 5: Mockup Sabor Express -->
                     <div class="carousel-slide">
-                        <img src="23.png" alt="[AquíXpert]" onerror="handleImgError(this)" class="max-w-full max-h-full object-contain rounded-xl">
+                        <img src="5.png" alt="[Sabor Express Mockup]" onerror="handleImgError(this)" class="max-w-full max-h-full object-contain rounded-xl">
                     </div>
 
-                    <!-- Slide 6: Sistema de Negocios (Klou Lab) -->
+                    <!-- Slide 6: Chatbot SoyAgentia -->
                     <div class="carousel-slide">
-                        <img src="24.png" alt="[Klou Lab]" onerror="handleImgError(this)" class="max-w-full max-h-full object-contain rounded-xl">
+                        <img src="6.png" alt="[SoyAgentia Chatbot]" onerror="handleImgError(this)" class="max-w-full max-h-full object-contain rounded-xl">
                     </div>
 
-                    <!-- Slide 7: Tarjeta Sabor Express -->
+                    <!-- Slide 7: Remanence Colombia -->
                     <div class="carousel-slide">
-                        <img src="25.png" alt="[Sabor Express Secundaria]" onerror="handleImgError(this)" class="max-w-full max-h-full object-contain rounded-xl">
+                        <img src="7.png" alt="[Remanence Colombia]" onerror="handleImgError(this)" class="max-w-full max-h-full object-contain rounded-xl">
                     </div>
 
-                    <!-- Slide 8: Diseño Aura Visual -->
+                    <!-- Slide 8: AquíXpert / Aprende a Escalar -->
                     <div class="carousel-slide">
-                        <img src="26.jpg" alt="[Aura Visual]" onerror="handleImgError(this)" class="max-w-full max-h-full object-contain rounded-xl">
+                        <img src="8.png" alt="[AquíXpert]" onerror="handleImgError(this)" class="max-w-full max-h-full object-contain rounded-xl">
                     </div>
 
-                    <!-- Slide 9: Tarjeta Diseño Oscuro Sabor Express (Nuevo) -->
+                    <!-- Slide 9: Klou Lab -->
                     <div class="carousel-slide">
-                        <img src="27.png" alt="[Sabor Express Oscura]" onerror="handleImgError(this)" class="max-w-full max-h-full object-contain rounded-xl">
+                        <img src="9.png" alt="[Klou Lab]" onerror="handleImgError(this)" class="max-w-full max-h-full object-contain rounded-xl">
+                    </div>
+
+                    <!-- Slide 10: Sabor Express Comercial -->
+                    <div class="carousel-slide">
+                        <img src="10.png" alt="[Sabor Express Comercial]" onerror="handleImgError(this)" class="max-w-full max-h-full object-contain rounded-xl">
+                    </div>
+
+                    <!-- Slide 11: Aura Visual (Nuevo) -->
+                    <div class="carousel-slide">
+                        <img src="11.jpg" alt="[Aura Visual]" onerror="handleImgError(this)" class="max-w-full max-h-full object-contain rounded-xl">
+                    </div>
+
+                    <!-- Slide 12: Tarjeta Estilo Neón (Nuevo) -->
+                    <div class="carousel-slide">
+                        <img src="12.png" alt="[Tarjeta Estilo Neón]" onerror="handleImgError(this)" class="max-w-full max-h-full object-contain rounded-xl">
                     </div>
 
                 </div>
@@ -273,7 +302,7 @@
 
             <!-- Controles Inferiores (Puntos + Botón Volver) -->
             <div class="mt-2">
-                <!-- Indicadores (Puntos de Paginación para 9 Slides) -->
+                <!-- Indicadores (Puntos de Paginación para 12 Slides) -->
                 <div class="flex justify-center flex-wrap gap-2 mb-4" id="carouselIndicators">
                     <span class="w-2.5 h-2.5 rounded-full bg-cyan-500 cursor-pointer transition-all" onclick="irASlide(0)"></span>
                     <span class="w-2.5 h-2.5 rounded-full bg-gray-600 cursor-pointer transition-all" onclick="irASlide(1)"></span>
@@ -284,6 +313,9 @@
                     <span class="w-2.5 h-2.5 rounded-full bg-gray-600 cursor-pointer transition-all" onclick="irASlide(6)"></span>
                     <span class="w-2.5 h-2.5 rounded-full bg-gray-600 cursor-pointer transition-all" onclick="irASlide(7)"></span>
                     <span class="w-2.5 h-2.5 rounded-full bg-gray-600 cursor-pointer transition-all" onclick="irASlide(8)"></span>
+                    <span class="w-2.5 h-2.5 rounded-full bg-gray-600 cursor-pointer transition-all" onclick="irASlide(9)"></span>
+                    <span class="w-2.5 h-2.5 rounded-full bg-gray-600 cursor-pointer transition-all" onclick="irASlide(10)"></span>
+                    <span class="w-2.5 h-2.5 rounded-full bg-gray-600 cursor-pointer transition-all" onclick="irASlide(11)"></span>
                 </div>
 
                 <button class="w-full bg-gradient-to-r from-blue-500 to-cyan-500 py-3 rounded-xl text-sm font-bold uppercase tracking-wider shadow-lg hover:opacity-90 active:scale-[0.99] transition-all" onclick="cerrarModalServicios()">Volver a la Tarjeta</button>
@@ -384,9 +416,9 @@
             document.getElementById('modalHorario').style.display = 'flex';
         }
 
-        // LÓGICA DEL CARRUSEL DE SERVICIOS (9 SLIDES)
+        // LÓGICA DEL CARRUSEL DE SERVICIOS (12 SLIDES)
         let currentSlide = 0;
-        const totalSlides = 9;
+        const totalSlides = 12;
         let autoPlayInterval = null;
 
         function abrirModalServicios() {
@@ -440,10 +472,16 @@
             }, 6000);
         }
 
+        // Detener autoplay al interactuar
         function detenerAutoPlay() {
             if (autoPlayInterval) {
                 clearInterval(autoPlayInterval);
             }
+        }
+
+        // Función para reiniciar el temporizador de AutoPlay manualmente tras interacción del usuario
+        function reiniciarAutoPlay() {
+            iniciarAutoPlay();
         }
 
         // Support de gestos táctiles (Swipe)
