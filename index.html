@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>IN GRAPHICS</title>
     <!-- PWA Configuración -->
-    <link rel="manifest" href="manifest.json">
+    <link class="manifest" href="manifest.json">
     <meta name="theme-color" content="#050505">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -213,7 +213,7 @@
         </div>
     </div>
     
-    <!-- Modal Servicios en Pantalla Completa con Portafolio de 12 Imágenes -->
+    <!-- Modal Servicios en Pantalla Completa con Portafolio de 11 Imágenes -->
     <div id="modalServicios" class="modal" onclick="cerrarModalServicios()">
         <div class="w-full h-full max-w-2xl mx-auto flex flex-col justify-between p-6 relative" onclick="event.stopPropagation()">
             
@@ -279,12 +279,7 @@
                         <img src="10.png" alt="[Sabor Express Comercial]" onerror="handleImgError(this)" class="max-w-full max-h-full object-contain rounded-xl">
                     </div>
 
-                    <!-- Slide 11: Aura Visual (Nuevo) -->
-                    <div class="carousel-slide">
-                        <img src="11.jpg" alt="[Aura Visual]" onerror="handleImgError(this)" class="max-w-full max-h-full object-contain rounded-xl">
-                    </div>
-
-                    <!-- Slide 12: Tarjeta Estilo Neón (Nuevo) -->
+                    <!-- Slide 11: Tarjeta Estilo Neón (Nuevo) -->
                     <div class="carousel-slide">
                         <img src="12.png" alt="[Tarjeta Estilo Neón]" onerror="handleImgError(this)" class="max-w-full max-h-full object-contain rounded-xl">
                     </div>
@@ -302,7 +297,7 @@
 
             <!-- Controles Inferiores (Puntos + Botón Volver) -->
             <div class="mt-2">
-                <!-- Indicadores (Puntos de Paginación para 12 Slides) -->
+                <!-- Indicadores (Puntos de Paginación para 11 Slides) -->
                 <div class="flex justify-center flex-wrap gap-2 mb-4" id="carouselIndicators">
                     <span class="w-2.5 h-2.5 rounded-full bg-cyan-500 cursor-pointer transition-all" onclick="irASlide(0)"></span>
                     <span class="w-2.5 h-2.5 rounded-full bg-gray-600 cursor-pointer transition-all" onclick="irASlide(1)"></span>
@@ -315,7 +310,6 @@
                     <span class="w-2.5 h-2.5 rounded-full bg-gray-600 cursor-pointer transition-all" onclick="irASlide(8)"></span>
                     <span class="w-2.5 h-2.5 rounded-full bg-gray-600 cursor-pointer transition-all" onclick="irASlide(9)"></span>
                     <span class="w-2.5 h-2.5 rounded-full bg-gray-600 cursor-pointer transition-all" onclick="irASlide(10)"></span>
-                    <span class="w-2.5 h-2.5 rounded-full bg-gray-600 cursor-pointer transition-all" onclick="irASlide(11)"></span>
                 </div>
 
                 <button class="w-full bg-gradient-to-r from-blue-500 to-cyan-500 py-3 rounded-xl text-sm font-bold uppercase tracking-wider shadow-lg hover:opacity-90 active:scale-[0.99] transition-all" onclick="cerrarModalServicios()">Volver a la Tarjeta</button>
@@ -416,9 +410,9 @@
             document.getElementById('modalHorario').style.display = 'flex';
         }
 
-        // LÓGICA DEL CARRUSEL DE SERVICIOS (12 SLIDES)
+        // LÓGICA DEL CARRUSEL DE SERVICIOS (11 SLIDES)
         let currentSlide = 0;
-        const totalSlides = 12;
+        const totalSlides = 11;
         let autoPlayInterval = null;
 
         function abrirModalServicios() {
